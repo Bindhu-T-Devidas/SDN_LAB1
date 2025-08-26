@@ -1,0 +1,19 @@
+name: CI Pipeline
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install numpy matplotlib
+      - name: Run calculator
+        run: python calculator.py
+      - name: Run matrix ops
+        run: python matrix_ops.py
+      - name: Generate plot
+        run: python data_plot.py
