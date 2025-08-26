@@ -1,0 +1,19 @@
+name: Git Info Workflow
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  git-info:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Show Git log and files
+        run: |
+          echo "=== Git Log ==="
+          git log --oneline -5
+          echo "=== Files in Repo ==="
+          ls -la
+
